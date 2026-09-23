@@ -20,15 +20,41 @@
             font-family: 'Arial', sans-serif;
         }
 
+        /* পিসির ব্যাকগ্রাউন্ড ব্ল্যাক এবং পুরো স্ক্রিন সেন্টার করার জন্য */
         body, html {
             height: 100%;
             width: 100%;
             overflow-x: hidden;
+            background-color: #0b0c10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* মোবাইল ফ্রেম কন্টেইনার (পিসিতে মোবাইল শেপ দেখাবে) */
+        .mobile-frame {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            max-height: 880px;
             background-color: #000;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 0 12px #1a1a1a;
+            border-radius: 24px;
+        }
+
+        @media (max-width: 480px) {
+            .mobile-frame {
+                max-width: 100%;
+                max-height: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
         }
 
         .bg-slider {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -52,55 +78,55 @@
             opacity: 0.4;
         }
 
-        /* পিসিতে মোবাইল ভিউ দেখানোর জন্য কনটেইনার ফিক্স করা হয়েছে */
         .wrapper {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 2;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.4);
-            max-width: 480px;
-            margin: 0 auto;
+            overflow-y: auto;
         }
 
         .top-logo-box {
             width: 100%;
-            max-width: 480px;
+            max-width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .top-logo-box img {
             max-width: 100%;
             height: auto;
-            max-height: 65px;
+            max-height: 55px;
             object-fit: contain;
         }
 
         .card {
-            background: rgba(15, 15, 25, 0.3); 
+            background: rgba(15, 15, 25, 0.4); 
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 16px;
             width: 100%;
-            max-width: 480px;
-            padding: 35px 25px;
+            padding: 25px 20px;
             text-align: center;
             color: #fff;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);        }
+            backdrop-filter: blur(4px);        
+        }
 
         .final-card {
             background: rgba(15, 15, 25, 0.98); 
             border-color: rgba(0, 219, 222, 0.2); 
             width: 100%; 
-            max-width: 480px;
             margin-top: 0;
         }
 
@@ -113,9 +139,9 @@
         }
 
         .text-title {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
             color: #f1f5f9;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
@@ -123,36 +149,36 @@
         .text-title-cyan {
             color: #00dbde; 
             font-weight: bold; 
-            font-size: 16px; 
-            margin-bottom: 10px;
+            font-size: 15px; 
+            margin-bottom: 8px;
         }
 
         .text-title-small {
-            font-size: 15px; 
-            margin-bottom: 20px;
+            font-size: 14px; 
+            margin-bottom: 15px;
         }
 
         .highlight-age {
             color: #ff3366;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             display: block;
-            margin-top: 15px;
+            margin-top: 12px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
         .btn-group {
             display: flex;
             flex-direction: row-reverse;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .btn {
             flex: 1;
-            padding: 14px;
-            font-size: 16px;
+            padding: 12px;
+            font-size: 15px;
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -174,13 +200,13 @@
             background: linear-gradient(135deg, #ff3366, #ff5e62);
             color: white;
             width: 100%;
-            padding: 16px;
-            font-size: 18px;
+            padding: 14px;
+            font-size: 16px;
             border-radius: 8px;
             border: none;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
             box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
             animation: lightShake 2s infinite;
         }
@@ -193,7 +219,7 @@
 
         #bufferingScreen {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -209,14 +235,14 @@
 
         .radar-box {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             border: 3px solid rgba(0, 219, 222, 0.2);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             background: radial-gradient(circle, rgba(0,219,222,0.08) 0%, rgba(0,0,0,0) 80%);
             box-shadow: 0 0 30px rgba(0, 219, 222, 0.1);
         }
@@ -254,8 +280,8 @@
         }
 
         .live-photo-scan {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 4px solid #fc00ff;
             object-fit: cover;
@@ -264,36 +290,35 @@
         }
 
         .scan-status {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: bold;
             color: #00dbde;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: 1px;
             text-align: center;
             text-shadow: 0 0 10px rgba(0, 219, 222, 0.5);
         }
 
         .scan-details {
-            font-size: 14px;
+            font-size: 13px;
             color: #a1a1aa;
             min-height: 25px;
             text-align: center;
             font-family: monospace;
             background: rgba(255,255,255,0.05);
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* পিসিতে ফাইনাল পেজ মোবাইল ফ্রেমের মধ্যে সীমাবদ্ধ রাখার জন্য ফিক্স করা হয়েছে */
         #finalPage {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             z-index: 5;
-            height: 100vh;
-            width: 100vw;
+            height: 100%;
+            width: 100%;
             background-color: #050612;
             overflow-y: auto;
             flex-direction: column;
@@ -303,12 +328,11 @@
         }
 
         .trusted-tag {
-            font-size: 12px;
+            font-size: 11px;
             color: #94a3b8;
             text-align: center;
             width: 100%;
-            max-width: 480px;
-            margin-top: 20px;
+            margin-top: 15px;
             font-weight: 500;
             letter-spacing: 0.8px;
             opacity: 0.8;
@@ -316,9 +340,9 @@
 
         .profile-container {
             position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 15px auto;
+            width: 110px;
+            height: 110px;
+            margin: 10px auto;
         }
 
         .profile-pic {
@@ -339,17 +363,17 @@
 
         .active-dot {
             position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 18px;
-            height: 18px;
+            top: 4px;
+            right: 4px;
+            width: 16px;
+            height: 16px;
             background-color: #23d160;
             border: 3px solid #0f0f13;
             border-radius: 50%;
         }
 
         .profile-name {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             color: #fff;
             margin-bottom: 5px;
@@ -362,16 +386,16 @@
         .verified-badge {
             display: inline-flex;
             align-items: center;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             vertical-align: middle;
         }
 
         .profile-details {
-            font-size: 15px;
+            font-size: 14px;
             color: #cbd5e1;
-            margin-bottom: 15px;
-            line-height: 1.6;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
 
         .location-badge {
@@ -380,17 +404,17 @@
             background: rgba(0, 219, 222, 0.15);
             border: 1px solid rgba(0, 219, 222, 0.4);
             color: #00dbde;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             gap: 5px;
         }
 
         .location-badge svg {
-            width: 14px;
-            height: 14px;
+            width: 13px;
+            height: 13px;
             fill: #00dbde;
         }
 
@@ -399,8 +423,8 @@
             background: linear-gradient(135deg, #00dbde, #fc00ff);
             color: white;
             text-decoration: none;
-            padding: 16px;
-            font-size: 18px;
+            padding: 14px;
+            font-size: 16px;
             font-weight: bold;
             border-radius: 12px;
             text-transform: uppercase;
@@ -417,7 +441,7 @@
 
         #finalBufferingScreen {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -427,35 +451,35 @@
             justify-content: center;
             align-items: center;
             background: #ffffff; 
-            padding: 30px;
+            padding: 25px;
         }
 
         .main-top-logo {
             width: 100%;
-            max-width: 400px; 
+            max-width: 320px; 
             height: auto;
-            max-height: 100px; 
+            max-height: 80px; 
             object-fit: contain;
-            margin-bottom: 30px; 
+            margin-bottom: 25px; 
         }
 
         .buffering-avatar {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: 3px solid #00dbde;
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
         }
 
         .connecting-notice {
-            font-size: 19px;
-            line-height: 1.6;
+            font-size: 17px;
+            line-height: 1.5;
             color: #1e293b;       
             text-align: center;
-            max-width: 460px;
-            margin-bottom: 25px;
+            max-width: 360px;
+            margin-bottom: 20px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
@@ -474,8 +498,8 @@
 
         .spinner {
             border: 4px solid rgba(0,0,0,0.06); 
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             border-left-color: #fc00ff;
             animation: spin 0.8s linear infinite;
@@ -489,109 +513,111 @@
 </head>
 <body>
 
-    <div class="bg-slider" id="mainSlider">
-        <div class="bg-slide active" style="background-image: url('v1.webp?v=1.0');"></div>
-        <div class="bg-slide" style="background-image: url('v2.webp?v=1.0');"></div>
-        <div class="bg-slide" style="background-image: url('v3.webp?v=1.0');"></div>
-        <div class="bg-slide" style="background-image: url('v4.webp?v=1.0');"></div>
-        <div class="bg-slide" style="background-image: url('v5.webp?v=1.0');"></div>
-    </div>
-
-    <div class="wrapper" id="pageWrapper">
-        <div class="top-logo-box">
-            <img src="lgd1.png?v=1.0" alt="Locanto Logo">
+    <div class="mobile-frame">
+        <div class="bg-slider" id="mainSlider">
+            <div class="bg-slide active" style="background-image: url('v1.webp?v=1.0');"></div>
+            <div class="bg-slide" style="background-image: url('v2.webp?v=1.0');"></div>
+            <div class="bg-slide" style="background-image: url('v3.webp?v=1.0');"></div>
+            <div class="bg-slide" style="background-image: url('v4.webp?v=1.0');"></div>
+            <div class="bg-slide" style="background-image: url('v5.webp?v=1.0');"></div>
         </div>
 
-        <div class="card">
-            <div id="step1" class="step-content active">
-                <p class="text-title">
-                    Welcome to Locanto For Meetup Website. An Official Locanto Website For Meetup. Our goal is to connect you with single, married, unmarried, or divorced women near your location.
-                </p>
-                <span class="highlight-age">Is your age over 18+?</span>
-                <div class="btn-group">
-                    <button class="btn btn-yes-1" onclick="nextStep(2)">Yes</button>
-                    <button class="btn btn-no-1" onclick="nextStep(2)">No</button>
+        <div class="wrapper" id="pageWrapper">
+            <div class="top-logo-box">
+                <img src="lgd1.png?v=1.0" alt="Locanto Logo">
+            </div>
+
+            <div class="card">
+                <div id="step1" class="step-content active">
+                    <p class="text-title">
+                        Welcome to Locanto For Meetup Website. An Official Locanto Website For Meetup. Our goal is to connect you with single, married, unmarried, or divorced women near your location.
+                    </p>
+                    <span class="highlight-age">Is your age over 18+?</span>
+                    <div class="btn-group">
+                        <button class="btn btn-yes-1" onclick="nextStep(2)">Yes</button>
+                        <button class="btn btn-no-1" onclick="nextStep(2)">No</button>
+                    </div>
+                </div>
+
+                <div id="step2" class="step-content">
+                    <p class="text-title">
+                        Every day, thousands of verified single women apply on this website for absolute sexual satisfaction. You will be connected with a single woman closest to your location. Do you give permission?
+                    </p>
+                    <div class="btn-group">
+                        <button class="btn btn-yes-2" onclick="nextStep(3)">Yes</button>
+                        <button class="btn btn-no-2" onclick="nextStep(3)">No</button>
+                    </div>
+                </div>
+
+                <div id="step3" class="step-content">
+                    <p class="text-title">
+                        You will be connected to a single woman near your location very soon. She might be someone you already know. Please do not leak our verified users' profiles or information. They wish to enjoy intimacy with full privacy.
+                    </p>
+                    <button class="btn-shake" onclick="triggerFirstBuffering()">FIND SOMEONE NEAR ME</button>
                 </div>
             </div>
+        </div>
 
-            <div id="step2" class="step-content">
-                <p class="text-title">
-                    Every day, thousands of verified single women apply on this website for absolute sexual satisfaction. You will be connected with a single woman closest to your location. Do you give permission?
+        <div id="bufferingScreen">
+            <div class="radar-box">
+                <div class="radar-pulse"></div>
+                <img src="q1.webp?v=1.0" id="liveScanPic" class="live-photo-scan" alt="Scanning">
+            </div>
+            <div class="scan-status" id="scanStatusText">ANALYZING GPS SIGNAL...</div>
+            <div class="scan-details" id="scanDetailsText">Initializing proximity matrix...</div>
+        </div>
+
+        <div id="finalPage">
+            <div class="card final-card">
+                <p class="text-title text-title-cyan">
+                    A single woman has been found near your location! She has requested private encounters and satisfaction.
                 </p>
-                <div class="btn-group">
-                    <button class="btn btn-yes-2" onclick="nextStep(3)">Yes</button>
-                    <button class="btn btn-no-2" onclick="nextStep(3)">No</button>
+
+                <div class="profile-container">
+                    <img src="fgk.webp?v=1.0" id="targetProfilePic" alt="Jacqueline Badran" class="profile-pic">
+                    <div class="active-dot"></div>
                 </div>
-            </div>
 
-            <div id="step3" class="step-content">
-                <p class="text-title">
-                    You will be connected to a single woman near your location very soon. She might be someone you already know. Please do not leak our verified users' profiles or information. They wish to enjoy intimacy with full privacy.
-                </p>
-                <button class="btn-shake" onclick="triggerFirstBuffering()">FIND SOMEONE NEAR ME</button>
-            </div>
-        </div>
-    </div>
+                <div class="profile-name">
+                    Jacqueline Badran
+                    <span class="verified-badge">
+                        <svg viewBox="0 0 24 24" fill="#1d9bf0" width="100%" height="100%">
+                            <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.48 0-.94.1-1.348.27C14.825 2.515 13.512 1.66 12 1.66c-1.512 0-2.825.855-3.422 2.12-.408-.17-.867-.27-1.348-.27-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.48 0 .94-.1 1.348-.27.597 1.265 1.91 2.12 3.422 2.12 1.512 0 2.825-.855 3.422-2.12.408.17.867.27 1.348.27 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6zm-12.614 3.91l-3.31-3.3 1.414-1.414 1.896 1.895 5.257-5.257 1.414 1.414-6.67 6.664z"/>
+                        </svg>
+                    </span>
+                </div>
 
-    <div id="bufferingScreen">
-        <div class="radar-box">
-            <div class="radar-pulse"></div>
-            <img src="q1.webp?v=1.0" id="liveScanPic" class="live-photo-scan" alt="Scanning">
-        </div>
-        <div class="scan-status" id="scanStatusText">ANALYZING GPS SIGNAL...</div>
-        <div class="scan-details" id="scanDetailsText">Initializing proximity matrix...</div>
-    </div>
-
-    <div id="finalPage">
-        <div class="card final-card">
-            <p class="text-title text-title-cyan">
-                A single woman has been found near your location! She has requested private encounters and satisfaction.
-            </p>
-
-            <div class="profile-container">
-                <img src="fgk.webp?v=1.0" id="targetProfilePic" alt="Jacqueline Badran" class="profile-pic">
-                <div class="active-dot"></div>
-            </div>
-
-            <div class="profile-name">
-                Jacqueline Badran
-                <span class="verified-badge">
-                    <svg viewBox="0 0 24 24" fill="#1d9bf0" width="100%" height="100%">
-                        <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.48 0-.94.1-1.348.27C14.825 2.515 13.512 1.66 12 1.66c-1.512 0-2.825.855-3.422 2.12-.408-.17-.867-.27-1.348-.27-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.48 0 .94-.1 1.348-.27.597 1.265 1.91 2.12 3.422 2.12 1.512 0 2.825-.855 3.422-2.12.408.17.867.27 1.348.27 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6zm-12.614 3.91l-3.31-3.3 1.414-1.414 1.896 1.895 5.257-5.257 1.414 1.414-6.67 6.664z"/>
+                <div class="location-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
-                </span>
-            </div>
+                    Distance: 3.5km away
+                </div>
 
-            <div class="location-badge">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                Distance: 3.5km away
-            </div>
+                <div class="profile-details">
+                    Age: 32 <br>
+                    Mobile: 0468 277 ***
+                </div>
 
-            <div class="profile-details">
-                Age: 32 <br>
-                Mobile: 0468 277 ***
-            </div>
+                <p class="text-title text-title-small">
+                    Complete your free profile validation to start private live chatting instantly with Jacqueline Badran.
+                </p>
 
-            <p class="text-title text-title-small">
-                Complete your free profile validation to start private live chatting instantly with Jacqueline Badran.
-            </p>
-
-            <div class="btn-cpa" onclick="triggerFinalLinkBuffering()">
-                Complete Your Profile
+                <div class="btn-cpa" onclick="triggerFinalLinkBuffering()">
+                    Complete Your Profile
+                </div>
             </div>
+            <div class="trusted-tag">🔒 Official Partner Site | Powered by Locanto</div>
         </div>
-        <div class="trusted-tag">🔒 Official Partner Site | Powered by Locanto</div>
-    </div>
 
-    <div id="finalBufferingScreen">
-        <img src="sf1.png?v=1.0" class="main-top-logo" alt="Website Logo">
-        <img src="fgk.webp?v=1.0" class="buffering-avatar" alt="Jacqueline Badran">
-        <div class="connecting-notice" id="dynamicNotice">
-            Connecting with <span class="profile-highlight">Jacqueline Badran</span>...
+        <div id="finalBufferingScreen">
+            <img src="sf1.png?v=1.0" class="main-top-logo" alt="Website Logo">
+            <img src="fgk.webp?v=1.0" class="buffering-avatar" alt="Jacqueline Badran">
+            <div class="connecting-notice" id="dynamicNotice">
+                Connecting with <span class="profile-highlight">Jacqueline Badran</span>...
+            </div>
+            <div class="spinner"></div>
         </div>
-        <div class="spinner"></div>
     </div>
 
     <link id="linkPreloader" rel="preconnect" href="">
@@ -599,7 +625,7 @@
     <script>
         const slides = document.querySelectorAll('.bg-slide');
         let currentSlideIndex = 0;
-        const affiliateUrl = "https://datinglocalsearch.com/tds/ae?tds_campaign=s7281sag&tdsId=s7281sag_r&s1=int&utm_source=int&utm_term=1&clickid={clickid}&subid={69xx}&subid2={69xx}&affid=8b1c8c2e";
+        const affiliateUrl = "https://datinglocalsearch.com/tds/ae?tds_campaign=s7281sag&tdsId=s7281sag_r&s1=int&utm_source=int&utm_term=1&clickid={clickid}&subid={ne66wx}&subid2={ne66wx}&affid=8b1c8c2e";
 
         function changeBackground() {
             if(slides.length > 0) {
